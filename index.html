@@ -13,8 +13,10 @@
       content="Anil Indorkar, Senior Software Engineer, .NET, C#, AWS, AI-native development, distributed systems, SaaS"
     />
     <meta name="author" content="Anil Indorkar" />
-    <meta name="theme-color" content="#0b1120" />
-    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f7f9fc" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Anil Indorkar | Senior Software Engineer" />
     <meta
       property="og:description"
@@ -22,15 +24,43 @@
     />
     <meta property="og:url" content="https://anilindorkar.github.io/beyond-the-resume/" />
     <meta property="og:site_name" content="Anil Indorkar" />
+    <meta property="og:image" content="https://anilindorkar.github.io/beyond-the-resume/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Anil Indorkar, Senior Software Engineer — building scalable software, cloud platforms and AI-powered engineering workflows."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Anil Indorkar | Senior Software Engineer" />
     <meta
       name="twitter:description"
       content="Professional profile of a Senior Software Engineer focused on .NET, AWS, distributed systems and AI-assisted delivery."
     />
+    <meta name="twitter:image" content="https://anilindorkar.github.io/beyond-the-resume/og-image.png" />
     <link rel="canonical" href="https://anilindorkar.github.io/beyond-the-resume/" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      /* Resolve the colour theme before first paint so the page never flashes the wrong one. */
+      (function () {
+        var theme = "light";
+        try {
+          var stored = localStorage.getItem("theme-preference");
+          if (stored === "light" || stored === "dark") {
+            theme = stored;
+          } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            theme = "dark";
+          }
+        } catch (error) {
+          // Storage blocked (private mode, sandboxed iframe): fall back to the light default.
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <script src="profile.js" defer></script>
+    <script src="script.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -39,8 +69,9 @@
         "jobTitle": "Senior Software Engineer",
         "email": "ajindorkar@gmail.com",
         "url": "https://anilindorkar.github.io/beyond-the-resume/",
+        "image": "https://anilindorkar.github.io/beyond-the-resume/og-image.png",
         "sameAs": [
-          "https://linkedin.com/in/anil-indorkar/",
+          "https://www.linkedin.com/in/anil-indorkar/",
           "https://github.com/anilindorkar"
         ],
         "knowsAbout": [
@@ -57,50 +88,73 @@
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <noscript>
-      <div class="noscript-banner">
+      <div class="banner">
         JavaScript is disabled. Please enable it to view the full profile details and experience
         timeline.
       </div>
     </noscript>
     <div class="site-shell">
-      <header class="site-header">
+      <header class="site-header" id="top">
         <div class="container nav-shell">
           <a class="brand" href="#top" aria-label="Anil Indorkar home">
-            <span class="brand-mark">AN</span>
+            <span class="brand-mark" aria-hidden="true">AI</span>
             <span class="brand-copy">
               <strong>Anil Indorkar</strong>
               <span>Senior Software Engineer</span>
             </span>
           </a>
-          <nav class="site-nav" aria-label="Primary">
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#expertise">Expertise</a>
-            <a href="#ai-native">AI-Native Engineering</a>
+            <a href="#featured-work">Work</a>
+            <a href="#ai-native">AI-Native</a>
             <a href="#contact">Contact</a>
           </nav>
-          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
-            <span aria-hidden="true">◐</span>
-          </button>
+          <div class="nav-actions">
+            <button
+              class="icon-button theme-toggle"
+              id="theme-toggle"
+              type="button"
+              aria-label="Colour theme: system"
+              title="Colour theme: system"
+            >
+              <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true">◐</span>
+            </button>
+            <button
+              class="icon-button nav-toggle"
+              id="nav-toggle"
+              type="button"
+              aria-controls="site-nav"
+              aria-expanded="false"
+              aria-label="Open navigation menu"
+            >
+              <span class="nav-toggle-bars" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
       </header>
 
-      <main id="top">
-        <section class="hero section">
+      <main id="main-content">
+        <section class="hero section" aria-labelledby="hero-heading">
           <div class="container hero-grid">
             <div class="hero-copy">
               <p class="eyebrow">Professional profile</p>
-              <h1>Building scalable software, cloud platforms and AI-powered engineering workflows.</h1>
+              <h1 id="hero-heading">
+                Building scalable software, cloud platforms and
+                <span class="nowrap">AI-powered</span> engineering workflows.
+              </h1>
               <p class="lead">
                 Senior Software Engineer with 18+ years of experience across .NET, AWS,
                 distributed systems, SaaS platforms and AI-native software development.
               </p>
               <div class="hero-actions">
-                <a class="button button-primary" href="#experience">View My Experience</a>
+                <a class="button button-primary" href="#experience">View my experience</a>
                 <a
                   class="button button-secondary"
-                  href="https://linkedin.com/in/anil-indorkar/"
+                  href="https://www.linkedin.com/in/anil-indorkar/"
                   target="_blank"
                   rel="noopener noreferrer"
                   >LinkedIn</a
@@ -118,61 +172,70 @@
           </div>
         </section>
 
-        <section class="section" id="about">
+        <section class="section" id="about" aria-labelledby="about-heading">
           <div class="container section-grid">
             <div class="section-intro">
               <p class="eyebrow">About</p>
-              <h2>A career shaped by software delivery, architecture and engineering leadership.</h2>
+              <h2 id="about-heading">
+                A career shaped by software delivery, architecture and engineering leadership.
+              </h2>
             </div>
             <div class="prose" id="about-story"></div>
           </div>
         </section>
 
-        <section class="section section-muted" id="achievements">
+        <section class="section section-muted" id="achievements" aria-labelledby="achievements-heading">
           <div class="container">
             <div class="section-intro">
               <p class="eyebrow">Highlights</p>
-              <h2>Measured outcomes across platforms, teams and products.</h2>
+              <h2 id="achievements-heading">Measured outcomes across platforms, teams and products.</h2>
             </div>
             <div class="achievement-grid" id="achievement-grid"></div>
           </div>
         </section>
 
-        <section class="section" id="experience">
+        <section class="section" id="experience" aria-labelledby="experience-heading">
           <div class="container">
             <div class="section-intro">
               <p class="eyebrow">Experience</p>
-              <h2>Career progression from software engineering to leadership and back to hands-on product engineering.</h2>
+              <h2 id="experience-heading">
+                Career progression from software engineering to leadership and back to hands-on
+                product engineering.
+              </h2>
             </div>
             <div class="timeline" id="experience-timeline"></div>
           </div>
         </section>
 
-        <section class="section section-muted" id="expertise">
+        <section class="section section-muted" id="expertise" aria-labelledby="expertise-heading">
           <div class="container">
             <div class="section-intro">
               <p class="eyebrow">Engineering expertise</p>
-              <h2>Technical strengths organized around delivery, architecture and scale.</h2>
+              <h2 id="expertise-heading">
+                Technical strengths organized around delivery, architecture and scale.
+              </h2>
             </div>
             <div class="expertise-grid" id="expertise-grid"></div>
           </div>
         </section>
 
-        <section class="section" id="featured-work">
+        <section class="section" id="featured-work" aria-labelledby="featured-work-heading">
           <div class="container">
             <div class="section-intro">
               <p class="eyebrow">Featured work</p>
-              <h2>Selected examples of systems, platforms and outcomes.</h2>
+              <h2 id="featured-work-heading">Selected examples of systems, platforms and outcomes.</h2>
             </div>
             <div class="project-grid" id="project-grid"></div>
           </div>
         </section>
 
-        <section class="section section-accent" id="ai-native">
-          <div class="container ai-grid">
+        <section class="section section-accent" id="ai-native" aria-labelledby="ai-native-heading">
+          <div class="container section-grid">
             <div class="section-intro">
               <p class="eyebrow">AI-native engineering</p>
-              <h2>Using AI as part of the engineering workflow—not just as a chat interface.</h2>
+              <h2 id="ai-native-heading">
+                Using AI as part of the engineering workflow—not just as a chat interface.
+              </h2>
             </div>
             <div class="ai-panel">
               <p class="lead" id="ai-summary"></p>
@@ -181,31 +244,35 @@
           </div>
         </section>
 
-        <section class="section" id="philosophy">
+        <section class="section" id="philosophy" aria-labelledby="philosophy-heading">
           <div class="container section-grid">
             <div class="section-intro">
               <p class="eyebrow">Engineering philosophy</p>
-              <h2>Principles that guide technology choices, delivery and collaboration.</h2>
+              <h2 id="philosophy-heading">
+                Principles that guide technology choices, delivery and collaboration.
+              </h2>
             </div>
             <ul class="principle-list" id="principle-list"></ul>
           </div>
         </section>
 
-        <section class="section section-muted" id="education">
+        <section class="section section-muted" id="education" aria-labelledby="education-heading">
           <div class="container section-grid">
             <div class="section-intro">
               <p class="eyebrow">Education</p>
-              <h2>Academic foundation.</h2>
+              <h2 id="education-heading">Academic foundation.</h2>
             </div>
             <div class="education-card" id="education-card"></div>
           </div>
         </section>
 
-        <section class="section" id="contact">
+        <section class="section" id="contact" aria-labelledby="contact-heading">
           <div class="container contact-shell">
-            <div>
+            <div class="section-intro">
               <p class="eyebrow">Contact</p>
-              <h2>Interested in working together or discussing engineering, cloud or AI?</h2>
+              <h2 id="contact-heading">
+                Interested in working together or discussing engineering, cloud or AI?
+              </h2>
             </div>
             <div class="contact-links" id="contact-links"></div>
           </div>
@@ -214,13 +281,10 @@
 
       <footer class="site-footer">
         <div class="container footer-shell">
-          <p>© <span id="current-year"></span> Anil Indorkar</p>
+          <p>© <span id="current-year">2026</span> Anil Indorkar</p>
           <a href="mailto:ajindorkar@gmail.com">ajindorkar@gmail.com</a>
         </div>
       </footer>
     </div>
-
-    <script src="profile.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>

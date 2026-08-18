@@ -1,7 +1,7 @@
 window.siteContent = {
   heroMetrics: [
     { label: "Experience", value: "18+ years" },
-    { label: "Active users supported", value: "10,000+" },
+    { label: "Active users", value: "10,000+" },
     { label: "Engineers led", value: "8" }
   ],
   about: [

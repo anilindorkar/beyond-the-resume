@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anilindorkar.github.io/beyond-the-resume/sitemap.xml
