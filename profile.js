@@ -1,7 +1,7 @@
 window.siteContent = {
   heroMetrics: [
     { label: "Experience", value: "18+ years" },
-    { label: "Active users supported", value: "10,000+" },
+    { label: "Active users", value: "10,000+" },
     { label: "Engineers led", value: "8" }
   ],
   about: [
@@ -91,26 +91,32 @@ window.siteContent = {
   expertise: [
     {
       title: "Cloud & Architecture",
+      icon: "cloud",
       items: ["AWS", "Aurora", "RDS", "Lambda", "SNS", "SQS", "Step Functions", "CloudWatch"]
     },
     {
       title: "Backend Engineering",
+      icon: "database",
       items: ["C#", ".NET", "ASP.NET", "ASP.NET Core", "Web API", "Entity Framework", "PostgreSQL", "MS SQL"]
     },
     {
       title: "AI & Developer Productivity",
+      icon: "sparkles",
       items: ["AI-native development", "Claude", "Claude Code", "SpecKit", "AI-assisted workflows", "Python"]
     },
     {
       title: "Frontend & APIs",
+      icon: "code",
       items: ["React", "NodeJS", "GraphQL"]
     },
     {
       title: "Engineering & DevOps",
+      icon: "branch",
       items: ["Docker", "Kubernetes", "CI/CD", "TDD", "NUnit"]
     },
     {
       title: "Leadership",
+      icon: "users",
       items: ["Agile", "Scrum", "Stakeholder management", "Technical strategy", "Team building"]
     }
   ],

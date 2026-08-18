@@ -13,8 +13,10 @@
       content="Anil Indorkar, Senior Software Engineer, .NET, C#, AWS, AI-native development, distributed systems, SaaS"
     />
     <meta name="author" content="Anil Indorkar" />
-    <meta name="theme-color" content="#0b1120" />
-    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f7f9fc" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Anil Indorkar | Senior Software Engineer" />
     <meta
       property="og:description"
@@ -22,15 +24,43 @@
     />
     <meta property="og:url" content="https://anilindorkar.github.io/beyond-the-resume/" />
     <meta property="og:site_name" content="Anil Indorkar" />
+    <meta property="og:image" content="https://anilindorkar.github.io/beyond-the-resume/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Anil Indorkar, Senior Software Engineer — building scalable software, cloud platforms and AI-powered engineering workflows."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Anil Indorkar | Senior Software Engineer" />
     <meta
       name="twitter:description"
       content="Professional profile of a Senior Software Engineer focused on .NET, AWS, distributed systems and AI-assisted delivery."
     />
+    <meta name="twitter:image" content="https://anilindorkar.github.io/beyond-the-resume/og-image.png" />
     <link rel="canonical" href="https://anilindorkar.github.io/beyond-the-resume/" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      /* Resolve the colour theme before first paint so the page never flashes the wrong one. */
+      (function () {
+        var theme = "light";
+        try {
+          var stored = localStorage.getItem("theme-preference");
+          if (stored === "light" || stored === "dark") {
+            theme = stored;
+          } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            theme = "dark";
+          }
+        } catch (error) {
+          // Storage blocked (private mode, sandboxed iframe): fall back to the light default.
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <script src="profile.js" defer></script>
+    <script src="script.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -39,8 +69,9 @@
         "jobTitle": "Senior Software Engineer",
         "email": "ajindorkar@gmail.com",
         "url": "https://anilindorkar.github.io/beyond-the-resume/",
+        "image": "https://anilindorkar.github.io/beyond-the-resume/og-image.png",
         "sameAs": [
-          "https://linkedin.com/in/anil-indorkar/",
+          "https://www.linkedin.com/in/anil-indorkar/",
           "https://github.com/anilindorkar"
         ],
         "knowsAbout": [
@@ -57,54 +88,210 @@
     </script>
   </head>
   <body>
+    <!--
+      Inline icon sprite. Symbols are referenced with <use href="#i-name"> from both
+      static markup and JavaScript-rendered content, so there is no icon font and no
+      extra request, and every glyph inherits currentColor.
+    -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
+      <symbol id="i-sparkles" viewBox="0 0 24 24">
+        <path d="M12 3l1.8 4.7L18.5 9.5 13.8 11.3 12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3Z" />
+        <path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7L19 15Z" />
+      </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21v-1a7 7 0 0 1 7-7h2a7 7 0 0 1 7 7v1" />
+      </symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24">
+        <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+        <path d="M7 6H4.5A2.5 2.5 0 0 0 7 8.5" />
+        <path d="M17 6h2.5A2.5 2.5 0 0 1 17 8.5" />
+        <path d="M12 14v3" />
+        <path d="M8.5 20h7" />
+        <path d="M9.5 20l.5-3h4l.5 3" />
+      </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24">
+        <rect x="2.5" y="7" width="19" height="13" rx="2" />
+        <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+        <path d="M2.5 12h19" />
+      </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24">
+        <path d="m12 3 9 4.5-9 4.5-9-4.5L12 3Z" />
+        <path d="m3 12 9 4.5L21 12" />
+        <path d="m3 16.5 9 4.5 9-4.5" />
+      </symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7.5" height="7.5" rx="1.5" />
+        <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" />
+        <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" />
+        <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5" />
+      </symbol>
+      <symbol id="i-cpu" viewBox="0 0 24 24">
+        <rect x="6" y="6" width="12" height="12" rx="2" />
+        <rect x="10" y="10" width="4" height="4" rx="1" />
+        <path d="M9.5 2v4" /><path d="M14.5 2v4" />
+        <path d="M9.5 18v4" /><path d="M14.5 18v4" />
+        <path d="M2 9.5h4" /><path d="M2 14.5h4" />
+        <path d="M18 9.5h4" /><path d="M18 14.5h4" />
+      </symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="m15.5 8.5-2 5.5-5.5 2 2-5.5 5.5-2Z" />
+      </symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24">
+        <path d="M12 4 2 9l10 5 10-5-10-5Z" />
+        <path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5" />
+        <path d="M21 9.5v5" />
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+        <path d="m3 7 9 5.5L21 7" />
+      </symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="3" />
+        <path d="M8 10.5V17" />
+        <path d="M8 7.4v.1" />
+        <path d="M12 17v-3.6a2.2 2.2 0 0 1 4.4 0V17" />
+        <path d="M12 10.5V17" />
+      </symbol>
+      <symbol id="i-github" viewBox="0 0 24 24">
+        <path
+          d="M9 19c-4 1.4-4-2.5-6-3m12 5v-3.6c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.7 4.7 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1.1-.3-3.6 1.3a12.2 12.2 0 0 0-6 0C6.5 2.8 5.4 3.1 5.4 3.1a4.3 4.3 0 0 0-.1 3.2A4.7 4.7 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+        />
+      </symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M8 3v4" /><path d="M16 3v4" /><path d="M3 10h18" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24">
+        <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.3 10.2 4 4 0 0 0 7 19h10.5Z" />
+      </symbol>
+      <symbol id="i-database" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="6" rx="8" ry="3" />
+        <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6" />
+        <path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+      </symbol>
+      <symbol id="i-code" viewBox="0 0 24 24">
+        <path d="m8 6-6 6 6 6" /><path d="m16 6 6 6-6 6" />
+      </symbol>
+      <symbol id="i-branch" viewBox="0 0 24 24">
+        <circle cx="6" cy="5" r="2.5" />
+        <circle cx="6" cy="19" r="2.5" />
+        <circle cx="18" cy="9" r="2.5" />
+        <path d="M6 7.5v9" />
+        <path d="M18 11.5c0 3.2-3.4 4.2-6.5 4.6" />
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3.5" />
+        <path d="M2 20v-.5A5.5 5.5 0 0 1 7.5 14h3a5.5 5.5 0 0 1 5.5 5.5v.5" />
+        <path d="M16.5 5.3a3.5 3.5 0 0 1 0 6.4" />
+        <path d="M18 14.2a5.5 5.5 0 0 1 4 5.3v.5" />
+      </symbol>
+      <symbol id="i-target" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <circle cx="12" cy="12" r="5" />
+        <circle cx="12" cy="12" r="1.2" />
+      </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24">
+        <path
+          d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"
+        />
+      </symbol>
+      <symbol id="i-scale" viewBox="0 0 24 24">
+        <path d="M4 9V4h5" /><path d="M20 15v5h-5" />
+        <path d="m4 4 6 6" /><path d="m20 20-6-6" />
+      </symbol>
+      <symbol id="i-trend" viewBox="0 0 24 24">
+        <path d="m3 17 6-6 4 4 8-8" /><path d="M15 7h6v6" />
+      </symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24">
+        <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+      </symbol>
+    </svg>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <noscript>
-      <div class="noscript-banner">
+      <div class="banner">
         JavaScript is disabled. Please enable it to view the full profile details and experience
         timeline.
       </div>
     </noscript>
     <div class="site-shell">
-      <header class="site-header">
+      <header class="site-header" id="top">
         <div class="container nav-shell">
           <a class="brand" href="#top" aria-label="Anil Indorkar home">
-            <span class="brand-mark">AN</span>
+            <span class="brand-mark" aria-hidden="true">AI</span>
             <span class="brand-copy">
               <strong>Anil Indorkar</strong>
               <span>Senior Software Engineer</span>
             </span>
           </a>
-          <nav class="site-nav" aria-label="Primary">
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#expertise">Expertise</a>
-            <a href="#ai-native">AI-Native Engineering</a>
+            <a href="#featured-work">Work</a>
+            <a href="#ai-native">AI-Native</a>
             <a href="#contact">Contact</a>
           </nav>
-          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
-            <span aria-hidden="true">◐</span>
-          </button>
+          <div class="nav-actions">
+            <button
+              class="icon-button theme-toggle"
+              id="theme-toggle"
+              type="button"
+              aria-label="Colour theme: system"
+              title="Colour theme: system"
+            >
+              <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true">◐</span>
+            </button>
+            <button
+              class="icon-button nav-toggle"
+              id="nav-toggle"
+              type="button"
+              aria-controls="site-nav"
+              aria-expanded="false"
+              aria-label="Open navigation menu"
+            >
+              <span class="nav-toggle-bars" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
       </header>
 
-      <main id="top">
-        <section class="hero section">
+      <main id="main-content">
+        <section class="hero section" aria-labelledby="hero-heading">
           <div class="container hero-grid">
             <div class="hero-copy">
-              <p class="eyebrow">Professional profile</p>
-              <h1>Building scalable software, cloud platforms and AI-powered engineering workflows.</h1>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-sparkles" /></svg>
+                Professional profile
+              </p>
+              <h1 id="hero-heading">
+                Building scalable software, cloud platforms and
+                <span class="nowrap">AI-powered</span> engineering workflows.
+              </h1>
               <p class="lead">
                 Senior Software Engineer with 18+ years of experience across .NET, AWS,
                 distributed systems, SaaS platforms and AI-native software development.
               </p>
               <div class="hero-actions">
-                <a class="button button-primary" href="#experience">View My Experience</a>
+                <a class="button button-primary" href="#experience">
+                  View my experience
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right" /></svg>
+                </a>
                 <a
                   class="button button-secondary"
-                  href="https://linkedin.com/in/anil-indorkar/"
+                  href="https://www.linkedin.com/in/anil-indorkar/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  >LinkedIn</a
                 >
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin" /></svg>
+                  LinkedIn
+                </a>
               </div>
             </div>
             <aside class="hero-panel" aria-label="Professional summary">
@@ -118,61 +305,88 @@
           </div>
         </section>
 
-        <section class="section" id="about">
+        <section class="section" id="about" aria-labelledby="about-heading">
           <div class="container section-grid">
             <div class="section-intro">
-              <p class="eyebrow">About</p>
-              <h2>A career shaped by software delivery, architecture and engineering leadership.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user" /></svg>
+                About
+              </p>
+              <h2 id="about-heading">
+                A career shaped by software delivery, architecture and engineering leadership.
+              </h2>
             </div>
             <div class="prose" id="about-story"></div>
           </div>
         </section>
 
-        <section class="section section-muted" id="achievements">
+        <section class="section section-muted" id="achievements" aria-labelledby="achievements-heading">
           <div class="container">
             <div class="section-intro">
-              <p class="eyebrow">Highlights</p>
-              <h2>Measured outcomes across platforms, teams and products.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trophy" /></svg>
+                Highlights
+              </p>
+              <h2 id="achievements-heading">Measured outcomes across platforms, teams and products.</h2>
             </div>
             <div class="achievement-grid" id="achievement-grid"></div>
           </div>
         </section>
 
-        <section class="section" id="experience">
+        <section class="section" id="experience" aria-labelledby="experience-heading">
           <div class="container">
             <div class="section-intro">
-              <p class="eyebrow">Experience</p>
-              <h2>Career progression from software engineering to leadership and back to hands-on product engineering.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-briefcase" /></svg>
+                Experience
+              </p>
+              <h2 id="experience-heading">
+                Career progression from software engineering to leadership and back to hands-on
+                product engineering.
+              </h2>
             </div>
             <div class="timeline" id="experience-timeline"></div>
           </div>
         </section>
 
-        <section class="section section-muted" id="expertise">
+        <section class="section section-muted" id="expertise" aria-labelledby="expertise-heading">
           <div class="container">
             <div class="section-intro">
-              <p class="eyebrow">Engineering expertise</p>
-              <h2>Technical strengths organized around delivery, architecture and scale.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-layers" /></svg>
+                Engineering expertise
+              </p>
+              <h2 id="expertise-heading">
+                Technical strengths organized around delivery, architecture and scale.
+              </h2>
             </div>
             <div class="expertise-grid" id="expertise-grid"></div>
           </div>
         </section>
 
-        <section class="section" id="featured-work">
+        <section class="section" id="featured-work" aria-labelledby="featured-work-heading">
           <div class="container">
             <div class="section-intro">
-              <p class="eyebrow">Featured work</p>
-              <h2>Selected examples of systems, platforms and outcomes.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-grid" /></svg>
+                Featured work
+              </p>
+              <h2 id="featured-work-heading">Selected examples of systems, platforms and outcomes.</h2>
             </div>
             <div class="project-grid" id="project-grid"></div>
           </div>
         </section>
 
-        <section class="section section-accent" id="ai-native">
-          <div class="container ai-grid">
+        <section class="section section-accent" id="ai-native" aria-labelledby="ai-native-heading">
+          <div class="container section-grid">
             <div class="section-intro">
-              <p class="eyebrow">AI-native engineering</p>
-              <h2>Using AI as part of the engineering workflow—not just as a chat interface.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cpu" /></svg>
+                AI-native engineering
+              </p>
+              <h2 id="ai-native-heading">
+                Using AI as part of the engineering workflow—not just as a chat interface.
+              </h2>
             </div>
             <div class="ai-panel">
               <p class="lead" id="ai-summary"></p>
@@ -181,31 +395,44 @@
           </div>
         </section>
 
-        <section class="section" id="philosophy">
+        <section class="section" id="philosophy" aria-labelledby="philosophy-heading">
           <div class="container section-grid">
             <div class="section-intro">
-              <p class="eyebrow">Engineering philosophy</p>
-              <h2>Principles that guide technology choices, delivery and collaboration.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-compass" /></svg>
+                Engineering philosophy
+              </p>
+              <h2 id="philosophy-heading">
+                Principles that guide technology choices, delivery and collaboration.
+              </h2>
             </div>
             <ul class="principle-list" id="principle-list"></ul>
           </div>
         </section>
 
-        <section class="section section-muted" id="education">
+        <section class="section section-muted" id="education" aria-labelledby="education-heading">
           <div class="container section-grid">
             <div class="section-intro">
-              <p class="eyebrow">Education</p>
-              <h2>Academic foundation.</h2>
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap" /></svg>
+                Education
+              </p>
+              <h2 id="education-heading">Academic foundation.</h2>
             </div>
             <div class="education-card" id="education-card"></div>
           </div>
         </section>
 
-        <section class="section" id="contact">
+        <section class="section" id="contact" aria-labelledby="contact-heading">
           <div class="container contact-shell">
-            <div>
-              <p class="eyebrow">Contact</p>
-              <h2>Interested in working together or discussing engineering, cloud or AI?</h2>
+            <div class="section-intro">
+              <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail" /></svg>
+                Contact
+              </p>
+              <h2 id="contact-heading">
+                Interested in working together or discussing engineering, cloud or AI?
+              </h2>
             </div>
             <div class="contact-links" id="contact-links"></div>
           </div>
@@ -214,13 +441,10 @@
 
       <footer class="site-footer">
         <div class="container footer-shell">
-          <p>© <span id="current-year"></span> Anil Indorkar</p>
+          <p>© <span id="current-year">2026</span> Anil Indorkar</p>
           <a href="mailto:ajindorkar@gmail.com">ajindorkar@gmail.com</a>
         </div>
       </footer>
     </div>
-
-    <script src="profile.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>
