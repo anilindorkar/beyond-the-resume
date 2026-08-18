@@ -167,26 +167,63 @@ const renderContact = () => {
 };
 
 const applyTheme = (theme) => {
-  const resolvedTheme =
-    theme === "system"
-      ? window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-      : theme;
+  let resolvedTheme = theme;
+  if (theme === "system") {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    resolvedTheme = prefersDark ? "dark" : "light";
+  }
 
-  document.body.dataset.theme = resolvedTheme;
+  document.documentElement.dataset.theme = resolvedTheme;
+};
+
+const readThemePreference = () => {
+  try {
+    return localStorage.getItem("theme-preference") || "system";
+  } catch (error) {
+    return "system";
+  }
+};
+
+const saveThemePreference = (theme) => {
+  try {
+    localStorage.setItem("theme-preference", theme);
+  } catch (error) {
+    /* storage unavailable */
+  }
 };
 
 const setupThemeToggle = () => {
-  const savedTheme = localStorage.getItem("theme-preference") || "system";
-  applyTheme(savedTheme);
+  applyTheme(readThemePreference());
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => {
+      if (readThemePreference() === "system") {
+        applyTheme("system");
+      }
+    });
 
   document.getElementById("theme-toggle").addEventListener("click", () => {
-    const currentTheme = localStorage.getItem("theme-preference") || "system";
-    const nextTheme =
-      currentTheme === "system" ? "dark" : currentTheme === "dark" ? "light" : "system";
-    localStorage.setItem("theme-preference", nextTheme);
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    saveThemePreference(nextTheme);
     applyTheme(nextTheme);
+  });
+};
+
+const setupNavToggle = () => {
+  const toggle = document.getElementById("nav-toggle");
+  const nav = document.getElementById("site-nav");
+
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  nav.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
   });
 };
 
@@ -202,6 +239,7 @@ const init = () => {
   renderEducation();
   renderContact();
   setupThemeToggle();
+  setupNavToggle();
   document.getElementById("current-year").textContent = new Date().getFullYear();
 };
 
