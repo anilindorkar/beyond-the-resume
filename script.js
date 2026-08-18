@@ -18,6 +18,28 @@ const createElement = (tagName, className, text) => {
   return element;
 };
 
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+/** Builds an <svg><use href="#i-name"> reference into the inline sprite in index.html. */
+const createIcon = (name) => {
+  const svg = document.createElementNS(SVG_NS, "svg");
+  // SVG elements need setAttribute; assigning .className does not work on them.
+  svg.setAttribute("class", "icon");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  const use = document.createElementNS(SVG_NS, "use");
+  use.setAttribute("href", `#i-${name}`);
+  svg.append(use);
+  return svg;
+};
+
+/** An icon paired with its label, used for timeline dates and locations. */
+const createMetaItem = (iconName, text) => {
+  const item = createElement("span", "meta-item");
+  item.append(createIcon(iconName), createElement("span", "", text));
+  return item;
+};
+
 /** Returns the container for a section, or null (with a warning) when the markup changed. */
 const mount = (id) => {
   const element = document.getElementById(id);
@@ -96,9 +118,13 @@ const renderExperience = (content) => {
     ...content.experience.map((item) => {
       const article = createElement("article", "timeline-item");
       const header = createElement("div", "timeline-header");
-      const timelineMeta = item.location ? `${item.dates} · ${item.location}` : item.dates;
+      const meta = createElement("div", "timeline-meta");
+      meta.append(createMetaItem("calendar", item.dates));
+      if (item.location) {
+        meta.append(createMetaItem("pin", item.location));
+      }
       header.append(
-        createElement("div", "timeline-meta", timelineMeta),
+        meta,
         createElement("h3", "", item.company),
         createElement("div", "timeline-role", item.role)
       );
@@ -132,7 +158,9 @@ const renderExpertise = (content) => {
       const article = createElement("article", "expertise-card");
       const tags = createElement("div", "tag-list");
       tags.replaceChildren(...category.items.map((item) => createElement("span", "", item)));
-      article.append(createElement("h3", "", category.title), tags);
+      const heading = createElement("h3");
+      heading.append(createIcon(category.icon || "layers"), createElement("span", "", category.title));
+      article.append(heading, tags);
       return article;
     })
   );
@@ -151,16 +179,16 @@ const renderProjects = (content) => {
       // per pair would add unnamed regions to the accessibility tree.
       const facts = createElement("dl", "project-facts");
       [
-        ["Problem", project.problem],
-        ["Engineering contribution", project.contribution],
-        ["Scale", project.scale],
-        ["Outcome", project.outcome]
-      ].forEach(([label, text]) => {
+        ["target", "Problem", project.problem],
+        ["wrench", "Engineering contribution", project.contribution],
+        ["scale", "Scale", project.scale],
+        ["trend", "Outcome", project.outcome]
+      ].forEach(([iconName, label, text]) => {
+        const term = createElement("dt", "project-label");
+        term.append(createIcon(iconName), createElement("span", "", label));
+
         const group = document.createElement("div");
-        group.append(
-          createElement("dt", "project-label", label),
-          createElement("dd", "", text)
-        );
+        group.append(term, createElement("dd", "", text));
         facts.append(group);
       });
       article.append(facts);
@@ -199,19 +227,20 @@ const renderEducation = (content) => {
   const container = mount("education-card");
   if (!container) return;
 
-  container.replaceChildren(
-    createElement("h3", "", content.education.degree),
-    createElement("p", "", content.education.years)
-  );
+  const heading = createElement("h3");
+  heading.append(createIcon("cap"), createElement("span", "", content.education.degree));
+
+  container.replaceChildren(heading, createElement("p", "", content.education.years));
 };
 
 const renderContact = (content) => {
   const container = mount("contact-links");
   if (!container) return;
 
-  const createLink = (href, text, variant) => {
-    const link = createElement("a", `button button-${variant}`, text);
+  const createLink = (href, text, variant, iconName) => {
+    const link = createElement("a", `button button-${variant}`);
     link.href = href;
+    link.append(createIcon(iconName), createElement("span", "", text));
     if (isExternalUrl(href)) {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
@@ -221,9 +250,9 @@ const renderContact = (content) => {
 
   // Email is the primary call to action; the profiles are secondary.
   container.replaceChildren(
-    createLink(`mailto:${content.contact.email}`, content.contact.email, "primary"),
-    createLink(content.contact.linkedin, "LinkedIn", "secondary"),
-    createLink(content.contact.github, "GitHub", "secondary")
+    createLink(`mailto:${content.contact.email}`, content.contact.email, "primary", "mail"),
+    createLink(content.contact.linkedin, "LinkedIn", "secondary", "linkedin"),
+    createLink(content.contact.github, "GitHub", "secondary", "github")
   );
 };
 

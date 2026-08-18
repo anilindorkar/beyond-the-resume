@@ -120,6 +120,17 @@ img {
   white-space: nowrap;
 }
 
+.icon {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -162,7 +173,7 @@ img {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 4rem 0;
 }
 
 .section-muted {
@@ -337,7 +348,7 @@ img {
 --------------------------------------------------------------------------- */
 
 .hero {
-  padding-top: 5rem;
+  padding-top: 3.25rem;
 }
 
 .hero-grid,
@@ -356,7 +367,7 @@ img {
 
 .section-grid {
   grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
-  gap: 2.5rem 4rem;
+  gap: 2rem 3.5rem;
   align-items: start;
 }
 
@@ -384,12 +395,20 @@ img {
 }
 
 .eyebrow {
-  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.7rem;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+.eyebrow .icon {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .hero-actions {
@@ -402,6 +421,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
   min-height: 3rem;
   padding: 0.85rem 1.4rem;
   border-radius: 999px;
@@ -488,14 +508,15 @@ img {
 --------------------------------------------------------------------------- */
 
 .section-intro {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
+/* Full-width sections: a narrow cap here left half the row empty. */
 .section-intro h2 {
   margin: 0;
   font-size: clamp(1.7rem, 2.6vw, 2.4rem);
   line-height: 1.15;
-  max-width: 26ch;
+  max-width: 42ch;
 }
 
 .prose {
@@ -518,6 +539,8 @@ img {
 .project-grid {
   display: grid;
   gap: 1.25rem;
+  /* Cards hug their content instead of stretching to the tallest in the row. */
+  align-items: start;
 }
 
 .achievement-grid {
@@ -532,7 +555,7 @@ img {
 .timeline {
   position: relative;
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .timeline::before {
@@ -568,12 +591,51 @@ img {
   gap: 0.35rem;
 }
 
+.timeline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meta-item .icon,
+.project-label .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--accent);
+}
+
 .timeline-header h3,
 .expertise-card h3,
 .project-card h3,
 .education-card h3 {
   margin: 0;
   color: var(--heading);
+}
+
+.expertise-card h3,
+.education-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.expertise-card h3 .icon,
+.education-card h3 .icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  color: var(--accent);
+}
+
+.project-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .timeline-role {
@@ -725,11 +787,11 @@ img {
   }
 
   .hero-grid {
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
   .hero {
-    padding-top: 3.5rem;
+    padding-top: 2.5rem;
   }
 
   .nav-toggle {
@@ -772,7 +834,7 @@ img {
 
 @media (max-width: 640px) {
   .section {
-    padding: 3.5rem 0;
+    padding: 2.75rem 0;
   }
 
   .brand-copy span {
