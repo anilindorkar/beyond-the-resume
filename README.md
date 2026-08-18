@@ -58,3 +58,5 @@ To move from the GitHub Pages URL to a custom domain later:
 4. Update the absolute URLs in `sitemap.xml`, `robots.txt` and `404.html`.
 
 The site uses relative asset paths, so switching to a custom domain later is straightforward.
+
+## Github pages deployment
