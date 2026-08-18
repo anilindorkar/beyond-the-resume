@@ -1,4 +1,5 @@
 const content = window.siteContent;
+const isExternalUrl = (href) => href.startsWith("https://") || href.startsWith("http://");
 
 const createElement = (tagName, className, text) => {
   const element = document.createElement(tagName);
@@ -149,7 +150,7 @@ const renderContact = () => {
   const createLink = (href, text) => {
     const link = createElement("a", "", text);
     link.href = href;
-    if (href.startsWith("http")) {
+    if (isExternalUrl(href)) {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
     }
