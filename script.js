@@ -150,7 +150,7 @@ const renderContact = () => {
     link.href = href;
     if (href.startsWith("http")) {
       link.target = "_blank";
-      link.rel = "noreferrer";
+      link.rel = "noopener noreferrer";
     }
     return link;
   };
