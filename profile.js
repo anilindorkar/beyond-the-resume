@@ -60,7 +60,7 @@ window.siteContent = {
       company: "Aloha Technology",
       role: "Team Lead",
       dates: "06/2009 – 12/2019",
-      location: "Location not specified",
+      location: "",
       summary:
         "Managed multiple software projects while working closely with clients and stakeholders across technical analysis, architecture, design, development and delivery.",
       responsibilities: [
@@ -78,7 +78,7 @@ window.siteContent = {
       company: "Mastermind Solution",
       role: "Software Engineer",
       dates: "01/2008 – 06/2009",
-      location: "Location not specified",
+      location: "",
       summary:
         "Worked on the design, development and maintenance of a hospital management system.",
       responsibilities: [

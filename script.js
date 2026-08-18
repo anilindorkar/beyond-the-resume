@@ -50,8 +50,9 @@ const renderExperience = () => {
     ...content.experience.map((item) => {
       const article = createElement("article", "timeline-item");
       const header = createElement("div", "timeline-header");
+      const timelineMeta = item.location ? `${item.dates} · ${item.location}` : item.dates;
       header.append(
-        createElement("div", "timeline-meta", `${item.dates} · ${item.location}`),
+        createElement("div", "timeline-meta", timelineMeta),
         createElement("h3", "", item.company),
         createElement("div", "timeline-role", item.role)
       );
